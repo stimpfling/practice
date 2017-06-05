@@ -23,10 +23,14 @@ def whatOrder(arr):
     print str(maxVal) + " "+ order 
 
 #asc
-whatOrder([0,1,2,3,4,5])
+whatOrder([0,1,2,3,4])
 #desc
-whatOrder([5,4,3,2,1,0])
+whatOrder([4,3,2,1,0])
 #desc circ
-whatOrder([0,5,4,3,2,1])
+whatOrder([0,4,3,2,1])
+whatOrder([3,2,1,0,4])
+whatOrder([2,1,0,3,4])
 #asc circ
 whatOrder([1,2,3,4,0])
+whatOrder([4,0,1,2,3])
+whatOrder([3,4,0,1,2])
