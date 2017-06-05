@@ -12,9 +12,9 @@ def whatOrder(arr):
         if val < minVal:
             minVal = val
             minPos = i 
-    if minPos == 0:
+    if minPos == 0 and maxPos == len(arr)-1:
         order = "asc" 
-    elif minPos == len(arr) - 1:
+    elif minPos == len(arr) - 1 and maxPos == 0:
         order = "desc"
     elif minPos < maxPos: 
         order = "desc circ"
@@ -27,6 +27,6 @@ whatOrder([0,1,2,3,4,5])
 #desc
 whatOrder([5,4,3,2,1,0])
 #desc circ
-whatOrder([3,2,1,0,5,4])
+whatOrder([0,5,4,3,2,1])
 #asc circ
-whatOrder([3,4,5,0,1,2])
+whatOrder([1,2,3,4,0])
