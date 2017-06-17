@@ -62,7 +62,6 @@ class Tree:
         allChildren = []
         currentSet = [self.head]
         while currentSet:
-            currentVals = []
             allChildren = []
             for node in currentSet:
                 sys.stdout.write(str(node.value))  
