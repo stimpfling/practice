@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import collections
 
 class Movie:
     def __init__(self,movie,actors):
@@ -7,14 +8,12 @@ class Movie:
 
 class ActorGraph:
     def __init__(self):
-        self.graph = {}
+        self.graph = collections.defaultdict(set)
 
     def addMovie(self,Movie):
         for actor in Movie.actors:
-            if actor in self.graph:
-                self.graph[actor].extend( [person for person in Movie.actors if person != actor] )
-            else:
-                self.graph[actor] = [person for person in Movie.actors if person != actor]
+            for person in Movie.actors:
+                self.graph[actor].add(person) 
 
 mainGraph = ActorGraph()
 mainGraph.addMovie(Movie("Two Brothers",["Alice","Bob","Jimmy","Yakov"]))
@@ -42,11 +41,10 @@ def baconDegree(actor1, actor2, graph):
 
 def shortestPath(actor1, actor2, graph, distances, nodeList):
     actor = actor1
-    queue = [actor1]
+    queue = collections.deque([actor1])
     visited = {} 
     while queue: 
-        actor = queue[0]
-        queue = queue[1:]
+        actor = queue.popleft()
         visited[actor] = True
         for child in graph[actor]:
             if distances[actor]+1 < distances[child]:
