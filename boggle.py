@@ -7,7 +7,7 @@ def findWords(words, matrix):
     wordExists = collections.defaultdict(lambda:0,wordExists)
 
     for word in words: 
-        visited = [ [0 for x in range(N)] for y in range(N)] 
+        visited = [ [False for x in range(N)] for y in range(N)] 
         startingCoords = findStartingCoords(word, matrix, N)     
 
         for origin in startingCoords:
@@ -21,7 +21,7 @@ def findWords(words, matrix):
 def visitCoord(x, y, visited, matrix, N, string, pos):
     if visited[x][y]:
         return
-    visited[x][y] = 1
+    visited[x][y] = True
     for neighbor in getAllNeighbors(x,y,N):
         if matrix[neighbor[0]][neighbor[1]] == string[pos+1]:
             if pos+1 >= len(string)-1:
@@ -62,7 +62,12 @@ words = ['geeks', "for", "quiz", "go"]
 board = [['g', 'i', 'z'],
          ['u', 'e', 'k'],
          ['q', 's', 'e']]
-
+"""
+words = ["ABCECF"]
+board = [['Z', 'E', 'C'],
+         ['F', 'C', 'B'],
+         ['Z', 'B', 'A']]
+"""
 findWords(words, board)
 
 
