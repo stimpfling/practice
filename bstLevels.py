@@ -28,7 +28,6 @@ class Tree:
     def __insertNodeRec(self, node, startNode):
         if node.value <= startNode.value:
             if not startNode.left:
-                #print "insert " + str(node.value) + " at " + str(startNode.value) + " left"
                 startNode.left = node
                 return
             else:
